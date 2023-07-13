@@ -1,0 +1,47 @@
+spring:
+   profiles:
+      active: local
+---
+spring:
+   config:
+      activate:
+         on-profile:
+         - local
+   r2dbc:
+      url: r2dbc:postgresql://postgres@localhost:5432/testdb
+      username: postgres
+      password: 4y7sV96vA9wv46VR
+      
+springdoc:
+   swagger-ui:
+      path: /swagger-ui.html
+logging:
+  level:
+    io.r2dbc.postgresql.QUERY: DEBUG # for queries
+    io.r2dbc.postgresql.PARAM: DEBUG # for parameters
+---
+spring:
+   config:
+      activate:
+         on-profile:
+         - non-prod
+   r2dbc:
+      url: r2dbc:postgresql://postgres@localhost:5432/testdb
+      username: postgres
+      password: 4y7sV96vA9wv46VR
+springdoc:
+   swagger-ui:
+      path: /swagger-ui.html
+---
+spring:
+   config:
+      activate:
+         on-profile:
+         - prod
+   r2dbc:
+      url: r2dbc:postgresql://postgres@localhost:5432/testdb
+      username: postgres
+      password: 4y7sV96vA9wv46VR
+springdoc:
+   swagger-ui:
+      path: /swagger-ui.html
