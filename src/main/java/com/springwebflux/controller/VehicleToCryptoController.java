@@ -34,7 +34,6 @@ public class VehicleToCryptoController {
 		this.buyService = buyService;
 		this.reportService = reportService;
 	}
-
 	@GetMapping("/convert")
 	public Mono<ConvertResponse> convert(@RequestBody ConvertRequest convertRequest) {
 		return convertService.convert(convertRequest);
