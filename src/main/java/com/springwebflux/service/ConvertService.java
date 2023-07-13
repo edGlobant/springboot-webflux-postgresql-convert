@@ -37,7 +37,7 @@ public class ConvertService {
 		VehicleModelEnum vehicleModel = VehicleModelEnum.valueOf(convertRequest.getData().getModel());
 		CryptoModelEnum vehicleCrypto = CryptoModelEnum.valueOf(convertRequest.getData().getCryptocurrency());
 
-		// TODO: Si la cripto no es ETH o BTC throw error
+		// TODO: Si la cripto no es ETH o BTC throw error, also add second URL call in case of err
 		
 		return vehicleService.getVehicles(vehicleModel).flatMap(v -> {
 			return cryptoService.getCryptoPrize(vehicleCrypto).flatMap(c -> {
@@ -72,7 +72,7 @@ public class ConvertService {
 
 			convertTableRepository.saveAll(entityList).subscribe();
 
-			// TODO: save to cache
+			// TODO: Save to cache
 
 			return Mono.just(convertResponse);
 		});

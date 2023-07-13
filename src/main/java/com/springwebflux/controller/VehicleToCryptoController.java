@@ -1,5 +1,6 @@
 package com.springwebflux.controller;
 
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -48,4 +49,9 @@ public class VehicleToCryptoController {
 	public Mono<ReportResponse> report(@RequestBody ReportRequest reportRequest) {
 		return reportService.report(reportRequest);
 	}
+	
+	@ExceptionHandler(Exception.class)
+    public Mono<String> handleException(Exception ex) {
+        return Mono.just("An error occurred: " + ex.getMessage());
+    }
 }

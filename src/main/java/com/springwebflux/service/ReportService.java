@@ -37,6 +37,8 @@ public class ReportService {
 		Mono<Double> amountCrypto = buyTableRepository.getTotalAmountSoldCrypto(convertedDate,
 				reportRequest.getData().getModel(), reportRequest.getData().getCryptocurrency());
 
+		// TODO: In case the amounts are empty give a msg
+
 		ReportResponse reportResponse = new ReportResponse();
 
 		return amountUSD.flatMap(amountU -> {
@@ -51,7 +53,7 @@ public class ReportService {
 				reportResponse.setData(reportData);
 
 				return Mono.just(reportResponse);
-			});
+			}).switchIfEmpty(Mono.just(reportResponse));
 		});
 	}
 }

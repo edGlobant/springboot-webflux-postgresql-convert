@@ -1,6 +1,6 @@
 spring:
   r2dbc:
-    url: r2dbc:postgresql://postgres@localhost:5432/testdb
+    url: r2dbc:postgresql://host.docker.internal:5432/testdb
     username: postgres
     password: 4y7sV96vA9wv46VR
   profiles:
