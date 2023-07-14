@@ -22,7 +22,7 @@ services:
       environment:
          - spring.r2dbc.url=r2dbc:postgresql://host.docker.internal:5432/testdb
       ports:
-      - "8090:8080"
+      - "8080:8080"
       depends_on:
       - database
       links:

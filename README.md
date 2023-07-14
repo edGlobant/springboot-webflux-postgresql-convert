@@ -11,10 +11,10 @@ These are the steps on how to get started the app:
 3. Run ```mvn clean package```
 4. Run ```docker-compose up```
 
-You can find the app running at ```PORT :8090``` now.
+You can find the app running at ```PORT :8080``` now.
 
 You can test the endpoints with the collection present on the directory ```/postman``` its v2.1 btw.
 
-For some reason swagger is not working on the docker container so if you run the app locally on ```port 8080``` you can check the docs on this url:
+You can also check the docs on:
 
-```http://localhost:8080/swagger-ui.html```
+http://localhost:8080/swagger-ui.html

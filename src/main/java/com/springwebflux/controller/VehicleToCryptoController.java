@@ -1,28 +1,19 @@
 package com.springwebflux.controller;
 
-import com.springwebflux.service.BuyService;
-import com.springwebflux.service.ConvertService;
-import com.springwebflux.service.ReportService;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.springwebflux.model.request.BuyRequest;
 import com.springwebflux.model.request.ConvertRequest;
 import com.springwebflux.model.request.ReportRequest;
 import com.springwebflux.model.response.BuyResponse;
 import com.springwebflux.model.response.ConvertResponse;
 import com.springwebflux.model.response.ReportResponse;
-import com.springwebflux.service.impl.ReportServiceImpl;
-
+import com.springwebflux.service.BuyService;
+import com.springwebflux.service.ConvertService;
+import com.springwebflux.service.ReportService;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping(value = "/v1", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/v1")
 public class VehicleToCryptoController {
 
 	private ConvertService convertService;
