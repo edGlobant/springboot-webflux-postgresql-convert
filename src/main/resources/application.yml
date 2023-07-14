@@ -12,6 +12,7 @@ springdoc:
 
 logging:
   level:
-    com.SpringbootWebfluxPostgresqlConvertApplication: DEBUG
     io.r2dbc.postgresql.QUERY: DEBUG # for queries
     io.r2dbc.postgresql.PARAM: DEBUG # for parameters
+
+debug: true
