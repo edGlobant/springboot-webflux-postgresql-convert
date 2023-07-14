@@ -20,9 +20,9 @@ services:
       image: spring-app
       container_name: spring-app
       environment:
-         -spring.r2dbc.url: r2dbc:postgresql://host.docker.internal:5432/testdb
+         - spring.r2dbc.url=r2dbc:postgresql://host.docker.internal:5432/testdb
       ports:
-      - 8080:8080
+      - "8080:8080"
       depends_on:
       - database
       links:
