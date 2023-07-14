@@ -1,5 +1,4 @@
 CREATE TABLE convert_table (
-  id SERIAL PRIMARY KEY,
   convertionId VARCHAR(255) NOT NULL,
   conversionTimelife VARCHAR(255) NOT NULL,
   model VARCHAR(255) NOT NULL,
