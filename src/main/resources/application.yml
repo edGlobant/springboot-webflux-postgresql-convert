@@ -4,11 +4,14 @@ spring:
     username: postgres
     password: 4y7sV96vA9wv46VR
   profiles:
-    active: local
+    active: Development
+
 springdoc:
    swagger-ui:
       path: /swagger-ui.html
+
 logging:
   level:
+    com.SpringbootWebfluxPostgresqlConvertApplication: DEBUG
     io.r2dbc.postgresql.QUERY: DEBUG # for queries
     io.r2dbc.postgresql.PARAM: DEBUG # for parameters
