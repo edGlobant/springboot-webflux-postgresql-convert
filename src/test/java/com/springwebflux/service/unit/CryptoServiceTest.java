@@ -3,19 +3,17 @@ package com.springwebflux.service.unit;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
+import com.springwebflux.service.CryptoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.springwebflux.model.constants.CryptoModelEnum;
-import com.springwebflux.service.CryptoService;
 
 import reactor.core.publisher.Mono;
 
@@ -26,12 +24,15 @@ public class CryptoServiceTest {
 	@MockBean(name = "webClientCrypto")
 	private WebClient webClientCrypto;
 
+	@MockBean(name = "webClientCryptoAlt")
+	private WebClient webClientCryptoAlt;
+
 	private CryptoService cryptoService;
 
 	@BeforeEach
 	public void init() {
 		webClientCrypto = Mockito.mock(WebClient.class);
-		cryptoService = new CryptoService(webClientCrypto);
+		cryptoService = new CryptoService(webClientCrypto,webClientCryptoAlt);
 	}
 
 	@Test

@@ -1,6 +1,8 @@
 package com.springwebflux.controller;
 
 import com.springwebflux.service.BuyService;
+import com.springwebflux.service.ConvertService;
+import com.springwebflux.service.ReportService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +17,7 @@ import com.springwebflux.model.request.ReportRequest;
 import com.springwebflux.model.response.BuyResponse;
 import com.springwebflux.model.response.ConvertResponse;
 import com.springwebflux.model.response.ReportResponse;
-import com.springwebflux.service.BuyServiceImpl;
-import com.springwebflux.service.ConvertService;
-import com.springwebflux.service.ReportService;
+import com.springwebflux.service.impl.ReportServiceImpl;
 
 import reactor.core.publisher.Mono;
 
@@ -32,7 +32,7 @@ public class VehicleToCryptoController {
 	private ReportService reportService;
 
 	public VehicleToCryptoController(ConvertService convertService, BuyService buyService,
-			ReportService reportService) {
+									 ReportService reportService) {
 		this.convertService = convertService;
 		this.buyService = buyService;
 		this.reportService = reportService;

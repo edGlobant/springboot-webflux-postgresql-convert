@@ -2,13 +2,13 @@ package com.springwebflux.service.integration;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import com.springwebflux.service.CryptoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.springwebflux.model.constants.CryptoModelEnum;
-import com.springwebflux.service.CryptoService;
 
 import reactor.core.publisher.Mono;
 

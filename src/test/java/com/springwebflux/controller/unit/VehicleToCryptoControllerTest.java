@@ -14,9 +14,9 @@ import com.springwebflux.controller.VehicleToCryptoController;
 import com.springwebflux.model.response.BuyResponse;
 import com.springwebflux.model.response.ConvertResponse;
 import com.springwebflux.model.response.ReportResponse;
-import com.springwebflux.service.BuyServiceImpl;
-import com.springwebflux.service.ConvertService;
-import com.springwebflux.service.ReportService;
+import com.springwebflux.service.impl.BuyServiceImpl;
+import com.springwebflux.service.impl.ConvertServiceImpl;
+import com.springwebflux.service.impl.ReportServiceImpl;
 
 import reactor.core.publisher.Mono;
 
@@ -28,13 +28,13 @@ public class VehicleToCryptoControllerTest {
 	private WebTestClient webTestClient;
 
 	@MockBean
-	private ConvertService convertService;
+	private ConvertServiceImpl convertServiceImpl;
 
 	@MockBean
 	private BuyServiceImpl buyServiceImpl;
 
 	@MockBean
-	private ReportService reportService;
+	private ReportServiceImpl reportServiceImpl;
 
 	static String CONVERT_URL = "/v1/convert";
 
@@ -45,7 +45,7 @@ public class VehicleToCryptoControllerTest {
 	@Test
 	void convert_shouldGetSuccessConvertResponse() {
 		// Given
-		when(convertService.convert(Mockito.any())).thenReturn(Mono.just(new ConvertResponse()));
+		when(convertServiceImpl.convert(Mockito.any())).thenReturn(Mono.just(new ConvertResponse()));
 
 		// When
 		webTestClient.post().uri(CONVERT_URL).exchange().expectStatus().is2xxSuccessful();
@@ -67,7 +67,7 @@ public class VehicleToCryptoControllerTest {
 	@Test
 	void convert_shouldGetSuccessReportResponse() {
 		// Given
-		when(reportService.report(Mockito.any())).thenReturn(Mono.just(new ReportResponse()));
+		when(reportServiceImpl.report(Mockito.any())).thenReturn(Mono.just(new ReportResponse()));
 
 		// When
 		webTestClient.get().uri(REPORT_URL).exchange().expectStatus().is2xxSuccessful();

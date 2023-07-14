@@ -1,12 +1,10 @@
 package com.springwebflux.service;
 
-import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
-
 import com.jayway.jsonpath.JsonPath;
 import com.springwebflux.model.constants.CryptoModelEnum;
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 @Service
