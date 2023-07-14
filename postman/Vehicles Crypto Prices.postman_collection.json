@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "9b41c3b0-b0d5-4809-ad71-d03b51fec9d5",
+		"name": "Vehicles Crypto Prices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Convert vehicle prize into cripto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"model\": \"GRAND\",\n        \"cryptocurrency\": \"BTC\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/convert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"convert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buy vehicle prize into cripto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"data\": {\n    \"convertionId\": \"8c2f4364-193d-4b94-b8e0-0d48034be77f\",\n    \"fullName\": \"Juan Perez\",\n    \"version\": \"GRAND I10 5P GL\",\n    \"model\": \"GRAND\",\n    \"cryptocurrency\": \"BTC\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/buy",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"buy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Convert vehicle prize into cripto Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"date\": \"2023-07-14\",\n        \"model\": \"GRAND\",\n        \"cryptocurrency\": \"BTC\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/report",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"report"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
