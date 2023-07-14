@@ -3,6 +3,7 @@ package com.springwebflux.service;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,11 +35,23 @@ public class ConvertService {
 	@Transactional
 	public Mono<ConvertResponse> convert(ConvertRequest convertRequest) {
 
+		if(convertRequest.getData().getModel().equals("")
+				|| (!convertRequest.getData().getModel().equals(VehicleModelEnum.TUCSON.name())
+				&& !convertRequest.getData().getModel().equals(VehicleModelEnum.ACCENT.name())
+				&& !convertRequest.getData().getModel().equals(VehicleModelEnum.GRAND.name())
+				&& !convertRequest.getData().getModel().equals(VehicleModelEnum.SANTA_FE.name()))){
+			return Mono.error(new RuntimeException("Error vehicle model incorrect. Use TUCSON,ACCENT,GRAND or SANTA_FE."));
+		}
+
+		if(convertRequest.getData().getCryptocurrency().equals("")
+				|| (!convertRequest.getData().getCryptocurrency().equals(CryptoModelEnum.BTC.name())
+				&& !convertRequest.getData().getCryptocurrency().equals(CryptoModelEnum.ETH.name()))){
+			return Mono.error(new RuntimeException("Error cryptocurrency incorrect. Use BTC or ETH."));
+		}
+
 		VehicleModelEnum vehicleModel = VehicleModelEnum.valueOf(convertRequest.getData().getModel());
 		CryptoModelEnum vehicleCrypto = CryptoModelEnum.valueOf(convertRequest.getData().getCryptocurrency());
 
-		// TODO: Si la cripto no es ETH o BTC throw error, also add second URL call in case of err
-		
 		return vehicleService.getVehicles(vehicleModel).flatMap(v -> {
 			return cryptoService.getCryptoPrize(vehicleCrypto).flatMap(c -> {
 				VehicleVersion vehicleVersion = new VehicleVersion();

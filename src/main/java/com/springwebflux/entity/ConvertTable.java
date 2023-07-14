@@ -1,6 +1,5 @@
 package com.springwebflux.entity;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -15,9 +14,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ConvertTable {
-	
-	@Id
-	private Long id;
 
 	@Column("convertionId")
 	private String convertionId;

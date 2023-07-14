@@ -39,9 +39,6 @@ public class VehicleService {
 			return VEHICLES_SANTA_FE_URL;
 		case GRAND:
 			return VEHICLES_GRAND_URL;
-		default:
-			// TODO: Error handling
-			break;
 		}
 		return null;
 	}

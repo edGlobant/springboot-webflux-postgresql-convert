@@ -13,7 +13,9 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class CryptoService {
 
-	private final WebClient webClientCrypto;
+	public final WebClient webClientCrypto;
+
+	public final WebClient webClientCryptoAlt;
 
 	public Mono<Double> getCryptoPrize(CryptoModelEnum modelo) {
 		String URI = findUriByCrypto(modelo);
@@ -22,6 +24,18 @@ public class CryptoService {
 
 		Mono<String> dataMono = monoString.flatMap(json -> {
 			Double data = JsonPath.parse(json).read("$.data.lastPrice", Double.class);
+			return Mono.just(data);
+		}).map(String::valueOf);
+
+		return dataMono.map(Double::parseDouble);
+	}
+	public Mono<Double> getCryptoPrize2(CryptoModelEnum modelo) {
+		String URI = findUriByCrypto(modelo);
+
+		Mono<String> monoString = webClientCryptoAlt.get().uri(URI).retrieve().bodyToMono(String.class);
+
+		Mono<String> dataMono = monoString.flatMap(json -> {
+			Double data = JsonPath.parse(json).read("$.price_usd", Double.class);
 			return Mono.just(data);
 		}).map(String::valueOf);
 
@@ -38,9 +52,6 @@ public class CryptoService {
 			return BTC_BASE_URL;
 		case ETH:
 			return ETH_BASE_URL;
-		default:
-			// TODO: Error handling
-			break;
 		}
 		return null;
 	}
